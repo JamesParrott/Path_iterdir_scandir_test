@@ -26,7 +26,7 @@ reps = 20
 
 paths = []
 
-# Create N files in TEST_DIR, 0.txt, ..., N.txt
+# Create N files in tmp_iterdir_path, 0.txt, ..., N.txt
 for i in range(N):
     path = tmp_iterdir_path / f'{i}.txt'
     paths.append(path)
