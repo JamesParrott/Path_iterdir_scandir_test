@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-2022
 
     steps:
-    - uses: LizardByte/setup-python-action
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
       with:
-        python-version: "3.13a04"
-
+        python-version: '3.13.0-alpha.4' 
     - run: python Path_iterdir_scandir_test.py
