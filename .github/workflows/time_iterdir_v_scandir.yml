@@ -22,4 +22,4 @@ jobs:
     - uses: actions/setup-python@v5
       with:
         python-version: '3.13.0-alpha.4' 
-    - run: python Path_iterdir_scandir_test.py
+    - run: python Path_iterdir_scandir_test.py 1000000 5
