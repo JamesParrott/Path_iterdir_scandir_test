@@ -9,8 +9,13 @@ on:
     
 jobs:
   compare_times:
+    strategy:
+      matrix:
+        os: ["ubuntu-22.04", "windows-2022", "macos-13"]   
+        # macos-14 is the latest, but currently the free GHA runners for it only have 7GB of RAM and 3 cores, unlike the others.
+        # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
     name: "Compare os.listdir v os.scandir implementations of Path.iterdir"
-    runs-on: windows-latest
+    runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v4
