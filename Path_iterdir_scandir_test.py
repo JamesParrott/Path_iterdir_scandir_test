@@ -35,6 +35,7 @@ def run_tests(N = 50_000, reps = 20):
         paths.append(path)
         path.touch()
 
+    print(f'Testing {reps=} of listing a directory of: {N} files')
 
     print(f'Time using Path.iterdir: {timeit(lambda: list(tmp_iterdir_path.iterdir()), number = reps)}')
 
