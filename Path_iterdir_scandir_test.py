@@ -27,11 +27,9 @@ for i in range(N):
     paths.append(path)
     path.touch()
 
-# print([path.name for path in tmp_iterdir_path.iterdir()])
-# print(list(tmp_scandir_path.iterdir()))
 
 print(f'Time using Path.iterdir: {timeit(lambda: list(tmp_iterdir_path.iterdir()), number = 4)}')
-# print(f'Time using Path.iterdir: {timeit(lambda: list(tmp_scandir_path.iterdir()), number = 10)}')
+print(f'Time using Path.iterdir: {timeit(lambda: list(tmp_scandir_path.iterdir()), number = 10)}')
 
 
 
