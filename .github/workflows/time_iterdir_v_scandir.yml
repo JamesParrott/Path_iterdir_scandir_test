@@ -1,0 +1,20 @@
+name:
+  "Iterdir timing test"
+
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    
+jobs:
+  compare_times:
+    name: "Compare os.listdir v os.scandir implementations of Path.iterdir"
+    runs-on: ubuntu-2022
+
+    steps:
+    - uses: LizardByte/setup-python-action
+      with:
+        python-version: "3.13a04"
+
+    - run: python Path_iterdir_scandir_test.py
