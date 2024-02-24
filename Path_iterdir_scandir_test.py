@@ -17,7 +17,9 @@ tmp_scandir_path = make_temp_path(ScanDirPath)
 
 tmp_iterdir_path.mkdir(exist_ok=True, parents=True)
 
-N = 10_000
+N = 50_000
+
+reps = 20
 
 paths = []
 
@@ -28,8 +30,10 @@ for i in range(N):
     path.touch()
 
 
-print(f'Time using Path.iterdir: {timeit(lambda: list(tmp_iterdir_path.iterdir()), number = 1)}')
-print(f'Time using ScanDirPath.iterdir: {timeit(lambda: list(tmp_scandir_path.iterdir()), number = 1)}')
+print(f'Time using Path.iterdir: {timeit(lambda: list(tmp_iterdir_path.iterdir()), number = reps)}')
+print(f'Time using ScanDirPath.iterdir: {timeit(lambda: list(tmp_scandir_path.iterdir()), number = reps)}')
+print(f'Time using os.listdir: {timeit(lambda: os.listdir(), number = reps)}')
+print(f'Time using os.scandir: {timeit(lambda: list(os.scandir()), number = reps)}')
 
 
 
