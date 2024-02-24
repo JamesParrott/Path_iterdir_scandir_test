@@ -56,5 +56,5 @@ def run_tests(N = 50_000, reps = 20):
 
 
 if __name__ == '__main__':
-    int_args = [int(x) for x in sys.argv[1:]]
+    int_args = [int(x) for x in sys.argv[1:3]]
     run_tests(*int_args)
