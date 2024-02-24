@@ -1,6 +1,9 @@
+import sys
 from timeit import timeit
 import tempfile
 from pathlib import Path
+
+
 
 
 def make_temp_path(PathClass):
@@ -31,13 +34,18 @@ for i in range(N):
 
 
 print(f'Time using Path.iterdir: {timeit(lambda: list(tmp_iterdir_path.iterdir()), number = reps)}')
-print(f'Time using ScanDirPath.iterdir: {timeit(lambda: list(tmp_scandir_path.iterdir()), number = reps)}')
+
+if sys.version_info >= (3, 13):
+    print(f'Time using ScanDirPath.iterdir: {timeit(lambda: list(tmp_scandir_path.iterdir()), number = reps)}')
+else: 
+    print("This test relies on implementation details of Python 3.13's pathlib, unavailable in earlier Pythons")
+
 print(f'Time using os.listdir: {timeit(lambda: os.listdir(), number = reps)}')
 print(f'Time using os.scandir: {timeit(lambda: list(os.scandir()), number = reps)}')
 
 
 
 
-# Delete files (only used for this test)
+# Delete files (created earlier, used only for this test)
 for path in paths:
     path.unlink()
